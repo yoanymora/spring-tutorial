@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>
-			Hola mundo con Yeey (:
-		</title>
+		<title th:text="${title}"></title>
 	</head>
 	<body>
-		<h1>
-			Hola mudo con Yeey! (:
-		</h1>
+		<h1 th:text="${body}"></h1>
 	</body>
 </html>
