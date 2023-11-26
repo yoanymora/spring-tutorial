@@ -8,5 +8,12 @@
 		<div th:if="${show}">
 			This is shown if the <i>show</i> attribute is <b>true</b>
 		</div>
+		
+		<div th:if="${ramdomShit}">
+			<ul th:each="item : ${ramdomShit}">
+				<li th:text="${item}"></li>
+			</ul>
+			
+		</div>
 	</body>
 </html>
