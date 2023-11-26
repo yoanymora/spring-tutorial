@@ -14,6 +14,8 @@ public class IndexController {
 		// de esta manera se pueden pasar valores desde el controlador a la vista
 		model.addAttribute("title", "Hola mundo con spring");
 		model.addAttribute("body", "El contenido de Hola mundo con spring");
+		
+		model.addAttribute("show", true);
 		return "indexYeey"; // este es el nombre del archivo HTML que retorna este metodo 
 	}
 	

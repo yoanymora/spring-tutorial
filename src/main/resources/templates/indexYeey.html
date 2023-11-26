@@ -5,5 +5,8 @@
 	</head>
 	<body>
 		<h1 th:text="${body}"></h1>
+		<div th:if="${show}">
+			This is shown if the <i>show</i> attribute is <b>true</b>
+		</div>
 	</body>
 </html>
