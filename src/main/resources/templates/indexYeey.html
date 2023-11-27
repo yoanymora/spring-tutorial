@@ -4,16 +4,12 @@
 		<title th:text="${title}"></title>
 	</head>
 	<body>
-		<h1 th:text="${body}"></h1>
-		<div th:if="${show}">
-			This is shown if the <i>show</i> attribute is <b>true</b>
-		</div>
-		
-		<div th:if="${ramdomShit}">
-			<ul th:each="item : ${ramdomShit}">
-				<li th:text="${item}"></li>
-			</ul>
-			
+		<h1 th:text="${title}"></h1>
+				
+		<div>	
+			<!--Aca los parametros se muestran como los nombres de cada uno en el metodo que los obtiene-->
+			First param is: <span th:text="${param1}"></span>
+			Second param is: <span th:text="${param2}"></span>
 		</div>
 	</body>
 </html>

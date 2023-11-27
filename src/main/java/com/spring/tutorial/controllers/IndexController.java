@@ -1,27 +1,22 @@
 package com.spring.tutorial.controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
 	
-	@GetMapping(value = "/index-mv")
-	public ModelAndView indexMV(ModelAndView mv) {
-		mv.addObject("title", "Hola mundo con modelAndView");
-		mv.addObject("body", "El contenido de Hola mundo con ModelAndview");
+	@GetMapping("/params")
+	// this is the way to use parameters from a URL
+	public String params(@RequestParam(defaultValue = "") String param1, @RequestParam(defaultValue = "", name="second_param") String param2, Model model) {
+		model.addAttribute("title", "Get values from URL params");
+		// el primer valor se llama param1, en la URL se manda como param1=""
+		model.addAttribute("param1", param1);
+		// el segundo valor se llama param2, en la URL se manda como second_param=""
+		model.addAttribute("param2", param2);
 		
-		mv.addObject("show", true);
-		mv.setViewName("indexYeey");
-		return mv;
-	}
-	
-	@ModelAttribute("ramdomShit")
-	public List<String> getRamdomShit() {
-		return List.of("1", "Casa", "false", "Mikasa", "666", "Ackerman");
+		return "indexYeey";
 	}
 }
