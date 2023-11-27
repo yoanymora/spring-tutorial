@@ -3,6 +3,7 @@ package com.spring.tutorial.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,8 @@ public class IndexController {
 	private InterfaceTeamServices teamService;
 	
 	// Si quiero implementar la interfaz en lugar de un servicio especifico
-	public IndexController(InterfaceTeamServices teamService) {		
+	// el decorador Qualifier indica que servicio implementar en este controlador
+	public IndexController(@Qualifier("teamAnime") InterfaceTeamServices teamService) {		
 		this.teamService = teamService;
 	}
 	

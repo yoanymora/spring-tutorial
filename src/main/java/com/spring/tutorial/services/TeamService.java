@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.spring.tutorial.models.Player;
 import com.spring.tutorial.models.Team;
 
-@Service
+@Service("teamAnime")
 public class TeamService implements InterfaceTeamServices {
 	/* Este servicio contiene la logica de negocios, en lugar de crear la clase en el controlador la creo en un paquete Servicio */
 	public List<Team> getTeams(){
