@@ -1,6 +1,5 @@
 package com.spring.tutorial.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
@@ -10,9 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.spring.tutorial.models.Player;
 import com.spring.tutorial.models.Team;
+import com.spring.tutorial.services.TeamService;
 
 @Controller
 public class IndexController {
+	
+	// Aca instancio un servicio de TeamService, asi puedo acceder a sus metodos
+	TeamService teamService = new TeamService();
 	
 	@GetMapping(value="/teams/{name}/{number}")
 	public String pathParameters(@PathVariable String name, @PathVariable("number") Integer number, Model model) {
@@ -20,7 +23,7 @@ public class IndexController {
 		
 		// esta declaracion permite hacer una busqueda en las listas de equipos, buscara el nombre del equipo  en los arrays de Teams, retornara el equipo cuyo nombre se haya
 		// recibido y lo guardara en teamOptional
-		Optional<Team> teamOptional = getTeams().stream().filter(team -> name.equals(team.getName())).findFirst();
+		Optional<Team> teamOptional = teamService.getTeams().stream().filter(team -> name.equals(team.getName())).findFirst();
 		// valido que el nombre del equipo existe
 		if (teamOptional.isPresent()) {
 			// si el equipo existe, busco el jugador con el numero que me dieron desde la URL
@@ -32,22 +35,6 @@ public class IndexController {
 				model.addAttribute("player", playerOptional.get());
 			}
 		}
-		return "indexYeey";
-	}
-	
-	private List<Team> getTeams() {
-		Team naruto = new Team();
-		naruto.setName("Naruto");
-		naruto.addPlayer(new Player("Naruto", 1));
-		naruto.addPlayer(new Player("Sakura", 2));
-		naruto.addPlayer(new Player("Sasuke", 3));
-		
-		Team jujutsu = new Team();
-		jujutsu.setName("Jujutsu");
-		jujutsu.addPlayer(new Player("Itadori", 1));
-		jujutsu.addPlayer(new Player("Fukoshima", 2));
-		jujutsu.addPlayer(new Player("Goyu", 3));
-		
-		return List.of(naruto, jujutsu);
+		return "index";
 	}
 }
