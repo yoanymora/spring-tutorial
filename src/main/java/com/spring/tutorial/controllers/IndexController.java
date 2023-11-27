@@ -14,15 +14,13 @@ import com.spring.tutorial.services.InterfaceTeamServices;
 
 @Controller
 public class IndexController {
-
-	// Este decorador me permite instanciar un servicio sin usar su constructor
-	@Autowired 
-	// Aca instancio un servicio de TeamService, asi puedo acceder a sus metodos
-	// esta instancia esta asociada a un servicio especifico, TeamService
-	// TeamService teamService;
+	
+	private InterfaceTeamServices teamService;
 	
 	// Si quiero implementar la interfaz en lugar de un servicio especifico
-	InterfaceTeamServices teamService;
+	public IndexController(InterfaceTeamServices teamService) {		
+		this.teamService = teamService;
+	}
 	
 	@GetMapping(value="/teams/{name}/{number}")
 	public String pathParameters(@PathVariable String name, @PathVariable("number") Integer number, Model model) {
