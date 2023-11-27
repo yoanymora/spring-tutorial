@@ -6,10 +6,9 @@
 	<body>
 		<h1 th:text="${title}"></h1>
 				
-		<div>	
-			<!--Aca los parametros se muestran como los nombres de cada uno en el metodo que los obtiene-->
-			First param is: <span th:text="${param1}"></span>
-			Second param is: <span th:text="${param2}"></span>
+		<div th:if="${player != null && team != null}">	
+			El equipo es: <span th:text="${team.getName()}"></span>
+			El jugador es: <span th:text="${player.getName()}"></span>(<span th:text="${player.getNumber()}"></span>)
 		</div>
 	</body>
 </html>
