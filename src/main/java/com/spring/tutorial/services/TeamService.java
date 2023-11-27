@@ -2,10 +2,13 @@ package com.spring.tutorial.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.spring.tutorial.models.Player;
 import com.spring.tutorial.models.Team;
 
-public class TeamService {
+@Service
+public class TeamService implements InterfaceTeamServices {
 	/* Este servicio contiene la logica de negocios, en lugar de crear la clase en el controlador la creo en un paquete Servicio */
 	public List<Team> getTeams(){
 		Team naruto = new Team();
